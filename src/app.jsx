@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import Base from './components/base.layout'
+import Base from './components/layout/base.layout'
 
 ReactDOM.render( 
     <Base />,
