@@ -12,7 +12,7 @@ const consoleMessages = store => next => action => {
     let { todos, errors } = store.getState()
 
     console.log(`
-        todos: ${todos}
+        todos: ${JSON.stringify(todos)}
         errors: ${errors}
     `)
 

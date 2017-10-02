@@ -3,9 +3,11 @@ import { updateTodo, removeTodo } from '../constants/actions'
 import TodoListComponent from '../components/shared/TodoList.component'
 import { connect } from 'react-redux'
 
-const mapStateToProps = (state, props) => ({
-    todos: state.todos
-})
+const mapStateToProps = (state, props) => {
+    return ({
+        todos: state.todos
+    })
+}
 
 const mapDispatchToProps = dispatch => ({
     onRemoveTodo(index) {
@@ -14,6 +16,7 @@ const mapDispatchToProps = dispatch => ({
         )
     },
     onUpdateTodo(index) {
+        console.log(`updating todo at index: ${index}`)
         dispatch(
             updateTodo(index)
         )

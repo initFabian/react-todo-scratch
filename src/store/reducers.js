@@ -27,7 +27,7 @@ export const allTodos = (state = [], action) => {
             })
 
         case C.REMOVE_TODO:
-            return state.filter((todo, i) => i === action.payload)
+            return state.filter((todo, i) => i !== action.payload)
         default:
             return state
     }

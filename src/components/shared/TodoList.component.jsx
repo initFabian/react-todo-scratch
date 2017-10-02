@@ -8,10 +8,16 @@ export default (props) => {
         props.onUpdateTodo(todo.id)
     }
 
+    const removeTodoAction = (todo) => {
+        props.onRemoveTodo(todo.id)
+    }
+
     const todos = props.todos.map((todo,idx) => {
         const todoProps = {
             key: idx,
+            removeTodoAction,
             todoClickAction,
+            id: idx,
             ...todo
         }
         return <Todo {...todoProps} />

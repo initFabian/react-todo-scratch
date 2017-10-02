@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-
+import {Col, Row} from 'react-bootstrap'
 
 export default (props) => {
     const isCompleted = () => {
@@ -17,11 +17,18 @@ export default (props) => {
         props.todoClickAction(props)
     }
     
+    const onRemoveAction = () => {
+        props.removeTodoAction(props)
+    }
+    
     return(
-        <div>
-            <p style={style} onClick={onClickAction.bind(this)}>
+        <Row>
+            <Col xs={2} style={style} onClick={onClickAction.bind(this)}>
                 title: {props.title} {isCompleted()}
-            </p>
-        </div>
+            </Col>
+            <Col xs={1}>
+            <a href="#" onClick={onRemoveAction.bind(this)}>Remove</a>
+            </Col>
+        </Row>
     )
 }
