@@ -1,6 +1,19 @@
 import C from '../constants/constants'
 import { combineReducers } from 'redux'
 
+// Filter 
+
+export const filter = (state = { isCompleted: false }, action) => {
+    switch (action.type) {
+        case C.FILTER_COMPLETED_TODO:
+            return {
+                isCompleted: !state.isCompleted
+            }
+        default:
+            return state
+    }
+}
+
 // Todos
 export const todo = (state, action) => {
     if (action.type === C.ADD_TODO) {
@@ -50,6 +63,7 @@ export const errors = (state = [], action) => {
 }
 
 export default combineReducers({
+    filter,
     todos: allTodos,
     errors
 })

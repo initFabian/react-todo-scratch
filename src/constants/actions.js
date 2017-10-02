@@ -10,6 +10,10 @@ export const updateTodo = (index) => ({
     payload: index
 })
 
+export const filterCompletedTodos = () => ({
+    type: C.FILTER_COMPLETED_TODO
+})
+
 export const addError = (message) => ({
     type: C.ADD_ERROR,
     payload: message

@@ -1,16 +1,30 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import {ToggleButtonGroup, ToggleButton} from 'react-bootstrap'
+import { connect } from 'react-redux'
+import { filterCompletedTodos } from '../../constants/actions'
 
-export default (props) => {
-    const onClickAction = (e) => {
-        // Dispatch Filter
-        console.log(e.target.value)
+const mapStateToProps = (state, props) => ({
+    isCompleted: state.filter.isCompleted || false
+})
+
+const mapDispatchToProps = dispatch => ({
+    onUpdateFilter() {
+        dispatch(
+            filterCompletedTodos()
+        )
     }
-    
+})
+const Footer = (props) => {
+    const onClickAction = (e) => {
+        props.onUpdateFilter()
+    }
+    const value = (props.isCompleted) ? 'completed' : 'all'
     return (
-        <ToggleButtonGroup type="checkbox">
-            <ToggleButton value={props.filterValue || 0} onChange={onClickAction.bind(this)}>Completed</ToggleButton>
+        <ToggleButtonGroup type="checkbox" defaultValue={value}>
+            <ToggleButton value='completed' onChange={onClickAction.bind(this)}>Completed</ToggleButton>
         </ToggleButtonGroup>
     )
 }
+
+export default connect(mapStateToProps, mapDispatchToProps)(Footer)

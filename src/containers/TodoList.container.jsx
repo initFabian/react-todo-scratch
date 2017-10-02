@@ -4,6 +4,13 @@ import TodoListComponent from '../components/shared/TodoList.component'
 import { connect } from 'react-redux'
 
 const mapStateToProps = (state, props) => {
+    if(state.filter.isCompleted) {
+        console.log('filter is on!')
+        return ({
+            todos: state.todos.filter(todo => todo.completed)
+        })
+    }
+
     return ({
         todos: state.todos
     })
@@ -23,5 +30,4 @@ const mapDispatchToProps = dispatch => ({
     }
 })
 
-const TodoListContainer = connect(mapStateToProps, mapDispatchToProps)(TodoListComponent)
-export default TodoListContainer
+export default connect(mapStateToProps, mapDispatchToProps)(TodoListComponent)
