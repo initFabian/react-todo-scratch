@@ -17,7 +17,6 @@ export default (props) => {
             key: idx,
             removeTodoAction,
             todoClickAction,
-            id: idx,
             ...todo
         }
         return <Todo {...todoProps} />

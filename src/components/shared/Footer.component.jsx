@@ -15,6 +15,7 @@ const mapDispatchToProps = dispatch => ({
         )
     }
 })
+
 const Footer = (props) => {
     const onClickAction = (e) => {
         props.onUpdateFilter()

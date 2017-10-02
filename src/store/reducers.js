@@ -17,7 +17,10 @@ export const filter = (state = { isCompleted: false }, action) => {
 // Todos
 export const todo = (state, action) => {
     if (action.type === C.ADD_TODO) {
-        return action.payload
+        return {
+            title: action.payload,
+            completed: false
+        }
     }
     return state
 }
