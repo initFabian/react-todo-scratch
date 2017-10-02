@@ -13,7 +13,8 @@ export default (props) => {
         color: (props.completed) ? 'green' : 'red'
     }
 
-    const onClickAction = () => {
+    const onClickAction = (e) => {
+        e.preventDefault()
         props.todoClickAction(props)
     }
     
@@ -27,7 +28,7 @@ export default (props) => {
                 title: {props.title} {isCompleted()}
             </Col>
             <Col xs={1}>
-            <a href="#" onClick={onRemoveAction.bind(this)}>Remove</a>
+                <a href="#" onClick={onRemoveAction.bind(this)}>Remove</a>
             </Col>
         </Row>
     )
