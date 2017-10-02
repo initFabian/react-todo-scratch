@@ -16,11 +16,13 @@ module.exports = {
         modules: [
             path.resolve(__dirname, 'node_modules')
         ],
-        extensions: ['.js', '.jsx', '.json']
+        extensions: ['.tsx', '.js', '.jsx', '.json']
     },
     devtool: 'inline-source-map',
     module: {
         loaders: [
+            { test: /\.tsx?$/, include: /src/, loader: "awesome-typescript-loader" },
+            { enforce: "pre", test: /\.js$/, loader: "source-map-loader" },
             { test: /\.html$/, loader: 'file-loader?name=[name].[ext]' },
             { test: /\.jsx$/, exclude: /node_modules/, loaders: ['react-hot-loader', 'babel-loader'] }
         ]
