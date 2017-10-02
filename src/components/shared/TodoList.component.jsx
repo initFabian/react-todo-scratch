@@ -5,7 +5,7 @@ import Todo from './Todo.component'
 export default (props) => {
 
     const todoClickAction = (todo) => {
-        props.updateTodoAtIndex(todo.id)
+        props.onUpdateTodo(todo.id)
     }
 
     const todos = props.todos.map((todo,idx) => {
@@ -18,7 +18,7 @@ export default (props) => {
     })
 
     return (
-        <div style={{marginLeft: 10}}>
+        <div>
             <h1>TODOs</h1>
             <div>
             {todos}

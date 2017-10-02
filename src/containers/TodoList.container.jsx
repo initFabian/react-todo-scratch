@@ -1,39 +1,24 @@
 import React from 'react'
-import autobind from 'autobind-decorator'
+import { updateTodo, removeTodo } from '../constants/actions'
 import TodoListComponent from '../components/shared/TodoList.component'
-import todoData from '../data/todos.data'
+import { connect } from 'react-redux'
 
-export default class TodoListContainer extends React.Component {
-    
-    constructor(props) {
-        super(props)
-        this.state = {
-            todos: todoData
-        }
-    }
+const mapStateToProps = (state, props) => ({
+    todos: state.todos
+})
 
-    @autobind
-    updateTodoAtIndex(index) {
-        const todos = this.state.todos.map((todo, idx) => {
-            if(idx === index) {
-                todo.completed = !todo.completed
-            }
-            return todo
-        })
-
-        this.setState({
-            todos
-        })
-    }
-
-    render() {
-        return ( 
-            <div>
-                <TodoListComponent 
-                    todos={this.state.todos}
-                    updateTodoAtIndex={this.updateTodoAtIndex}
-                /> 
-            </div>
+const mapDispatchToProps = dispatch => ({
+    onRemoveTodo(index) {
+        dispatch(
+            removeTodo(index)
+        )
+    },
+    onUpdateTodo(index) {
+        dispatch(
+            updateTodo(index)
         )
     }
-}
+})
+
+const TodoListContainer = connect(mapStateToProps, mapDispatchToProps)(TodoListComponent)
+export default TodoListContainer

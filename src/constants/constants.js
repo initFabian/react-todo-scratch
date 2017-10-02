@@ -1,0 +1,7 @@
+export default {
+    ADD_TODO: 'ADD_TODO',
+    UPDATE_TODO: 'UPDATE_TODO',
+    REMOVE_TODO: 'REMOVE_TODO',
+    ADD_ERROR: 'ADD_ERROR',
+    CLEAR_ERROR: 'CLEAR_ERROR'
+}
