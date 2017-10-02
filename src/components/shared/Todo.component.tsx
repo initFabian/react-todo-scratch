@@ -1,6 +1,5 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import {Col, Row} from 'react-bootstrap'
+import * as React from 'react'
+import { Col, Row } from 'react-bootstrap'
 
 export default (props) => {
     const isCompleted = () => {
@@ -8,7 +7,7 @@ export default (props) => {
         const notCompleted = <span className='glyphicon glyphicon-remove'></span>
         return (props.completed) ? completed : notCompleted
     }
-    
+
     const style = {
         color: (props.completed) ? 'green' : 'red'
     }
@@ -17,12 +16,12 @@ export default (props) => {
         e.preventDefault()
         props.todoClickAction(props)
     }
-    
+
     const onRemoveAction = () => {
         props.removeTodoAction(props)
     }
-    
-    return(
+
+    return (
         <Row>
             <Col xs={2} style={style} onClick={onClickAction.bind(this)}>
                 title: {props.title} {isCompleted()}

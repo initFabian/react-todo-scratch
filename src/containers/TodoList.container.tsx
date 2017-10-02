@@ -1,5 +1,7 @@
-import React from 'react'
-import { updateTodo, removeTodo } from '../constants/actions'
+import {
+    RemoveTodo,
+    UpdateTodo
+} from '../constants/actions'
 import TodoListComponent from '../components/shared/TodoList.component'
 import { connect } from 'react-redux'
 
@@ -9,8 +11,8 @@ const mapStateToProps = (state, props) => {
         return todo
     })
 
-    
-    if(state.filter.isCompleted) {
+
+    if (state.filter.isCompleted) {
         console.log('filter is on!')
         return ({
             todos: indexTodos.filter(todo => todo.completed)
@@ -25,13 +27,13 @@ const mapStateToProps = (state, props) => {
 const mapDispatchToProps = dispatch => ({
     onRemoveTodo(index) {
         dispatch(
-            removeTodo(index)
+            RemoveTodo(index)
         )
     },
     onUpdateTodo(index) {
         console.log(`updating todo at index: ${index}`)
         dispatch(
-            updateTodo(index)
+            UpdateTodo(index)
         )
     }
 })

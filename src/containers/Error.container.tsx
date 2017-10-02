@@ -1,8 +1,7 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import {Col, Row} from 'react-bootstrap'
+import * as React from 'react'
+import { Col, Row } from 'react-bootstrap'
 import { connect } from 'react-redux'
-import { clearError } from '../constants/actions'
+import { ClearError } from '../constants/actions'
 
 const mapStateToProps = (state, props) => ({
     messages: state.errors
@@ -11,7 +10,7 @@ const mapStateToProps = (state, props) => ({
 const mapDispatchToProps = dispatch => ({
     onClearError(index) {
         dispatch(
-            clearError(index)
+            ClearError(index)
         )
     }
 })
@@ -21,9 +20,9 @@ const Error = (props) => {
         props.onClearError(props.id)
     }
 
-    return(
-        <Row style={{marginLeft: 10}}>
-            <Col xs={7} style={{color: 'red'}}>
+    return (
+        <Row style={{ marginLeft: 10 }}>
+            <Col xs={7} style={{ color: 'red' }}>
                 {props.message}
             </Col>
             <Col xs={1}>

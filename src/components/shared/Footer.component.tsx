@@ -1,7 +1,7 @@
 import * as React from 'react'
-import {ToggleButtonGroup, ToggleButton} from 'react-bootstrap'
+import { ToggleButtonGroup, ToggleButton } from 'react-bootstrap'
 import { connect } from 'react-redux'
-import { filterCompletedTodos } from '../../constants/actions'
+import { FilterCompletedTodos } from '../../constants/actions'
 
 interface FooterState {
     filter: {
@@ -16,7 +16,7 @@ const mapStateToProps = (state: FooterState) => ({
 const mapDispatchToProps = (dispatch: any) => ({
     onUpdateFilter() {
         dispatch(
-            filterCompletedTodos()
+            FilterCompletedTodos()
         )
     }
 })

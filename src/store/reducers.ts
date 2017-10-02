@@ -1,11 +1,12 @@
-import C from '../constants/constants'
+import * as C from '../constants/constants'
 import { combineReducers } from 'redux'
+import { TodoType } from './types'
 
 // Filter 
 
 export const filter = (state = { isCompleted: false }, action) => {
     switch (action.type) {
-        case C.FILTER_COMPLETED_TODO:
+        case C.SET_VISIBILITY_FILTER:
             return {
                 isCompleted: !state.isCompleted
             }
@@ -25,7 +26,7 @@ export const todo = (state, action) => {
     return state
 }
 
-export const allTodos = (state = [], action) => {
+export const allTodos = (state: Array<TodoType> = [], action) => {
     switch (action.type) {
         case C.ADD_TODO:
             const hasTodo = state.some(todo => todo.title === action.payload.title)
@@ -34,7 +35,7 @@ export const allTodos = (state = [], action) => {
                 ...state,
                 todo(null, action)
             ]
-        case C.UPDATE_TODO:
+        case C.TOGGLE_TODO:
             return state.map((todo, i) => {
                 if (i === action.payload) {
                     todo.completed = !todo.completed

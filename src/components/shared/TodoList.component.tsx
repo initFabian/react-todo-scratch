@@ -1,5 +1,4 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
+import * as React from 'react'
 import Todo from './Todo.component'
 
 export default (props) => {
@@ -12,7 +11,7 @@ export default (props) => {
         props.onRemoveTodo(todo.id)
     }
 
-    const todos = props.todos.map((todo,idx) => {
+    const todos = props.todos.map((todo, idx) => {
         const todoProps = {
             key: idx,
             removeTodoAction,
@@ -26,7 +25,7 @@ export default (props) => {
         <div>
             <h1>TODOs</h1>
             <div>
-            {todos}
+                {todos}
             </div>
         </div>
     )
