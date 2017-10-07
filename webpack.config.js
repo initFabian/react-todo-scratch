@@ -1,6 +1,14 @@
 const webpack = require('webpack')
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+
+/*
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap-theme.min.css">
+*/
 module.exports = {
     entry: './src/index.tsx',
     output: {
@@ -24,5 +32,6 @@ module.exports = {
         inline: true,
         contentBase: './dist',
         port: 3000
-    }
+    },
+    plugins: [new HtmlWebpackPlugin()]
 }
