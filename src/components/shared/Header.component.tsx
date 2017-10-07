@@ -1,19 +1,7 @@
 import * as React from 'react'
 import { Button } from 'react-bootstrap'
-import { connect } from 'react-redux'
-import { AddTodo } from '../../constants/actions'
 
-const mapStateToProps = (state, props) => ({})
-
-const mapDispatchToProps = dispatch => ({
-    onAddTodo(title) {
-        dispatch(
-            AddTodo(title)
-        )
-    }
-})
-
-const Header = (props) => {
+export default (props) => {
     let textInput: HTMLInputElement
 
     const handleClick = () => {
@@ -31,5 +19,3 @@ const Header = (props) => {
         </div>
     )
 }
-
-export default connect(mapStateToProps, mapDispatchToProps)(Header)
