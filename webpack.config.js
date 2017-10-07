@@ -7,24 +7,22 @@ module.exports = {
         filename: 'app.bundle.js',
         path: path.resolve(__dirname, 'dist')
     },
-    devServer: {
-        inline: true,
-        contentBase: './dist',
-        port: 3000
-    },
+    devtool: 'inline-source-map',
     resolve: {
         modules: [
             path.resolve(__dirname, 'node_modules')
         ],
-        extensions: ['.tsx', '.ts', '.js', '.jsx', '.json']
+        extensions: ['.ts', '.tsx', '.js', '.json']
     },
-    devtool: 'inline-source-map',
     module: {
         loaders: [
-            { test: /\.(ts|tsx)?$/, include: /src/, loader: "awesome-typescript-loader" },
-            { enforce: "pre", test: /\.js$/, loader: "source-map-loader" },
-            { test: /\.html$/, loader: 'file-loader?name=[name].[ext]' },
-            { test: /\.jsx$/, exclude: /node_modules/, loaders: ['react-hot-loader', 'babel-loader'] }
+            { test: /\.(ts|tsx)?$/, loader: "awesome-typescript-loader" },
+            { enforce: "pre", test: /\.js$/, loader: "source-map-loader" }
         ]
+    },
+    devServer: {
+        inline: true,
+        contentBase: './dist',
+        port: 3000
     }
 }

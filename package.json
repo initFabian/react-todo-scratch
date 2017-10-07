@@ -4,12 +4,8 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "serve": "./node_modules/.bin/webpack-dev-server",
-        "dev": "NODE_ENV=development node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js --output-public-path=/dist/ --hot --history-api-fallback",
+        "serve": "./node_modules/.bin/webpack-dev-server --hot --history-api-fallback",
         "build": "rm -rf ./dist && NODE_ENV=development ./node_modules/webpack/bin/webpack.js",
-        "build-test": "rm -rf ./dist && NODE_ENV=test ./node_modules/webpack/bin/webpack.js",
-        "build-staging": "rm -rf ./dist && NODE_ENV=staging ./node_modules/webpack/bin/webpack.js",
-        "build-image": "docker build -t chaione/energenie:frontend-latest -f config/Dockerfile .",
         "test": "jest"
     },
     "keywords": [],
