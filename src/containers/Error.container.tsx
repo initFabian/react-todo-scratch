@@ -1,53 +1,22 @@
-import * as React from 'react'
-import { Col, Row } from 'react-bootstrap'
-import { connect } from 'react-redux'
-import { ClearError } from '../constants/actions'
+import { connect, Dispatch } from 'react-redux'
+import { ErrorAction } from '../store/actions/types.action'
+import { ClearError } from '../store/actions/error.action'
+import ErrorList from '../components/shared/ErrorList.component'
 
-const mapStateToProps = (state, props) => ({
+interface ErrorListState {
+    errors: Array<String>
+}
+
+const mapStateToProps = (state: ErrorListState) => ({
     messages: state.errors
 })
 
-const mapDispatchToProps = dispatch => ({
-    onClearError(index) {
+const mapDispatchToProps = (dispatch: Dispatch<ErrorAction>) => ({
+    onClearError(index: number) {
         dispatch(
             ClearError(index)
         )
     }
 })
-
-const Error = (props) => {
-    const removeErrorClick = () => {
-        props.onClearError(props.id)
-    }
-
-    return (
-        <Row style={{ marginLeft: 10 }}>
-            <Col xs={7} style={{ color: 'red' }}>
-                {props.message}
-            </Col>
-            <Col xs={1}>
-                <a href="#" onClick={removeErrorClick.bind(this)}><span className='glyphicon glyphicon-remove'></span></a>
-            </Col>
-        </Row>
-    )
-}
-
-const ErrorList = (props) => {
-    const removeErrorAtIndex = (index) => {
-        props.onClearError(index)
-    }
-
-    const errorList = props.messages.map((message, i) => {
-        console.log(message)
-        return <Error message={message} key={i} id={i} onClearError={removeErrorAtIndex} />
-    })
-
-    return (
-        <Row>
-            {errorList}
-        </Row>
-    )
-}
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(ErrorList)
