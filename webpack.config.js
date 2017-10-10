@@ -32,5 +32,11 @@ module.exports = {
         inline: true,
         contentBase: './dist',
         port: 3000
-    }
+    },
+    plugins: [
+        new HtmlWebpackPlugin({
+            title: "TODO App",
+            template: './src/index.ejs'
+        })
+    ]
 }
