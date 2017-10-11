@@ -1,28 +1,13 @@
 import * as React from 'react'
-import {ToggleButtonGroup, ToggleButton} from 'react-bootstrap'
-import { connect } from 'react-redux'
-import { filterCompletedTodos } from '../../constants/actions'
+import { ToggleButtonGroup, ToggleButton } from 'react-bootstrap'
 
-interface FooterState {
-    filter: {
-        isCompleted: boolean
-    }
+interface FooterProps {
+    isCompleted: boolean
+    onUpdateFilter(): void;
 }
 
-const mapStateToProps = (state: FooterState) => ({
-    isCompleted: state.filter.isCompleted || false
-})
-
-const mapDispatchToProps = (dispatch: any) => ({
-    onUpdateFilter() {
-        dispatch(
-            filterCompletedTodos()
-        )
-    }
-})
-
-const Footer = (props: any) => {
-    const onClickAction = (e: any) => {
+export default (props: FooterProps) => {
+    const onClickAction = (e: React.FormEventHandler<ToggleButton>) => {
         props.onUpdateFilter()
     }
     const value = (props.isCompleted) ? 'completed' : 'all'
@@ -33,5 +18,3 @@ const Footer = (props: any) => {
         </ToggleButtonGroup>
     )
 }
-
-export default connect(mapStateToProps, mapDispatchToProps)(Footer)
