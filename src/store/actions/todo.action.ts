@@ -1,28 +1,28 @@
 import * as C from '../../constants/constants'
-import { AddTodo, ToggleTodo, RemoveTodo, SetVisibilityFilter } from './types.action'
+import { TodoAction } from './types.action'
 
-export function AddTodo(title: string): AddTodo {
+export function AddTodo(title: string): TodoAction {
     return {
         type: C.ADD_TODO,
         payload: title
     }
 }
 
-export function UpdateTodo(index: number): ToggleTodo {
+export function UpdateTodo(index: number): TodoAction {
     return {
         type: C.TOGGLE_TODO,
         payload: index
     }
 }
 
-export function RemoveTodo(index: number): RemoveTodo {
+export function RemoveTodo(index: number): TodoAction {
     return {
         type: C.REMOVE_TODO,
         payload: index
     }
 }
 
-export function SetVisibilityFilter(): SetVisibilityFilter {
+export function SetVisibilityFilter(): TodoAction {
     return {
         type: C.SET_VISIBILITY_FILTER
     }

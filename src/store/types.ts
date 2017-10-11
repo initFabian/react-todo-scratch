@@ -1,6 +1,5 @@
 export interface TodoType {
     completed: boolean
-    onClick: (event: Event) => void
     title: string
 }
 

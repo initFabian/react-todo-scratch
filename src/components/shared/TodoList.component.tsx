@@ -1,24 +1,32 @@
 import * as React from 'react'
-import Todo from './Todo.component'
+import TodoComponent from './Todo.component'
+import { TodoType } from '../../store/types'
 
-export default (props) => {
+interface TodoListProps {
+    todos: Array<TodoType>
+    onUpdateTodo(id: number): void
+    onRemoveTodo(id: number): void
+}
 
-    const todoClickAction = (todo) => {
-        props.onUpdateTodo(todo.id)
+export default (props: TodoListProps) => {
+
+    const toggleTodoCompletion = (todoId: number) => {
+        props.onUpdateTodo(todoId)
     }
 
-    const removeTodoAction = (todo) => {
-        props.onRemoveTodo(todo.id)
+    const removeTodoAction = (todoId: number) => {
+        props.onRemoveTodo(todoId)
     }
 
     const todos = props.todos.map((todo, idx) => {
         const todoProps = {
             key: idx,
+            id: idx,
             removeTodoAction,
-            todoClickAction,
-            ...todo
+            todoClickAction: toggleTodoCompletion,
+            todo
         }
-        return <Todo {...todoProps} />
+        return <TodoComponent {...todoProps} />
     })
 
     return (

@@ -1,7 +1,11 @@
 import * as React from 'react'
 import { Button } from 'react-bootstrap'
 
-export default (props) => {
+interface HeaderComponentProps {
+    onAddTodo(string): void
+}
+
+export default (props: HeaderComponentProps) => {
     let textInput: HTMLInputElement
 
     const handleClick = () => {

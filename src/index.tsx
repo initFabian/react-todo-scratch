@@ -3,7 +3,7 @@ import * as ReactDOM from 'react-dom'
 import routes from './routes'
 import storeFactory from './store/store'
 import todoData from './constants/todos.data'
-import { AddError } from './constants/actions'
+import { AddError } from './store/actions/error.action'
 import { Provider } from 'react-redux'
 
 const initialState = (localStorage['redux-store']) ?

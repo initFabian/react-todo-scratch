@@ -1,10 +1,11 @@
 import * as C from '../constants/constants'
 import { combineReducers } from 'redux'
 import { TodoType } from './types'
+import { ErrorAction, TodoAction } from './actions/types.action'
 
 // Filter 
 
-export const filter = (state = { isCompleted: false }, action) => {
+export const filter = (state = { isCompleted: false }, action: TodoAction) => {
     switch (action.type) {
         case C.SET_VISIBILITY_FILTER:
             return {
@@ -16,24 +17,18 @@ export const filter = (state = { isCompleted: false }, action) => {
 }
 
 // Todos
-export const todo = (state, action) => {
-    if (action.type === C.ADD_TODO) {
-        return {
-            title: action.payload,
-            completed: false
-        }
-    }
-    return state
-}
 
-export const allTodos = (state: Array<TodoType> = [], action) => {
+function allTodos(state: Array<TodoType> = [], action: TodoAction): Array<TodoType> {
     switch (action.type) {
         case C.ADD_TODO:
-            const hasTodo = state.some(todo => todo.title === action.payload.title)
+            const hasTodo = state.some(todo => todo.title === action.payload)
 
             return (hasTodo) ? state : [
                 ...state,
-                todo(null, action)
+                {
+                    title: action.payload,
+                    completed: false
+                }
             ]
         case C.TOGGLE_TODO:
             return state.map((todo, i) => {
@@ -52,7 +47,7 @@ export const allTodos = (state: Array<TodoType> = [], action) => {
 
 // Errors
 
-export const errors = (state = [], action) => {
+export const errors = (state: Array<String> = [], action: ErrorAction) => {
     switch (action.type) {
         case C.ADD_ERROR:
             return [
